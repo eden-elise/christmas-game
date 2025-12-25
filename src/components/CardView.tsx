@@ -28,11 +28,11 @@ export function CardView({ deck, onBack }: CardViewProps) {
     root.style.setProperty('--color-question-text', deck.color.questionText);
 
     return () => {
-      // Reset to default on unmount
+      // Reset to dark mode defaults on unmount
       root.style.setProperty('--color-primary', '#e8a598');
       root.style.setProperty('--color-secondary', '#f5d5cf');
-      root.style.setProperty('--color-background', '#fff5f3');
-      root.style.setProperty('--color-background-end', '#ffe8e4');
+      root.style.setProperty('--color-background', '#1a1a2e');
+      root.style.setProperty('--color-background-end', '#16213e');
       root.style.setProperty('--color-text', '#5c3d37');
       root.style.setProperty('--color-card-back', '#d4857a');
       root.style.setProperty('--color-question-text', '#5c3d37');
