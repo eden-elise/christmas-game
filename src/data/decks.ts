@@ -133,7 +133,7 @@ export const decks: Deck[] = [
   {
     id: 'dreams',
     name: 'Dreams & Future',
-    description: 'Where are we going? What are we building?',
+    description: 'Where are you going?',
     icon: '✨',
     color: {
       primary: '#00897b',
