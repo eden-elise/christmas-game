@@ -13,6 +13,7 @@ export function CardView({ deck, onBack }: CardViewProps) {
   );
   const [isFlipped, setIsFlipped] = useState(false);
   const [seenCards, setSeenCards] = useState<Set<string>>(new Set());
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const currentCard = deck.cards[currentIndex];
 
@@ -47,32 +48,48 @@ export function CardView({ deck, onBack }: CardViewProps) {
   }, [isFlipped, currentCard.id]);
 
   const drawNextCard = useCallback(() => {
-    // Find unshuffled cards
-    const unseenIndices = deck.cards
-      .map((card, index) => ({ card, index }))
-      .filter(({ card }) => !seenCards.has(card.id))
-      .map(({ index }) => index);
+    if (isTransitioning) return;
 
-    // If all cards seen, reset
-    if (unseenIndices.length === 0) {
+    // First flip the card back
+    setIsFlipped(false);
+    setIsTransitioning(true);
+
+    // Wait for flip animation to complete, then change the card
+    setTimeout(() => {
+      // Find unseen cards
+      const unseenIndices = deck.cards
+        .map((card, index) => ({ card, index }))
+        .filter(({ card }) => !seenCards.has(card.id))
+        .map(({ index }) => index);
+
+      // If all cards seen, reset
+      if (unseenIndices.length === 0) {
+        setSeenCards(new Set());
+        const randomIndex = Math.floor(Math.random() * deck.cards.length);
+        setCurrentIndex(randomIndex);
+      } else {
+        // Pick random unseen card
+        const randomUnseen = unseenIndices[Math.floor(Math.random() * unseenIndices.length)];
+        setCurrentIndex(randomUnseen);
+      }
+
+      setIsTransitioning(false);
+    }, 600); // Match the CSS flip animation duration
+  }, [deck.cards, seenCards, isTransitioning]);
+
+  const shuffleAndReset = useCallback(() => {
+    if (isTransitioning) return;
+
+    setIsFlipped(false);
+    setIsTransitioning(true);
+
+    setTimeout(() => {
       setSeenCards(new Set());
       const randomIndex = Math.floor(Math.random() * deck.cards.length);
       setCurrentIndex(randomIndex);
-    } else {
-      // Pick random unseen card
-      const randomUnseen = unseenIndices[Math.floor(Math.random() * unseenIndices.length)];
-      setCurrentIndex(randomUnseen);
-    }
-
-    setIsFlipped(false);
-  }, [deck.cards, seenCards]);
-
-  const shuffleAndReset = useCallback(() => {
-    setSeenCards(new Set());
-    const randomIndex = Math.floor(Math.random() * deck.cards.length);
-    setCurrentIndex(randomIndex);
-    setIsFlipped(false);
-  }, [deck.cards.length]);
+      setIsTransitioning(false);
+    }, 600);
+  }, [deck.cards.length, isTransitioning]);
 
   const remainingCards = deck.cards.length - seenCards.size;
 
