@@ -2,8 +2,8 @@
 :root {
   --color-primary: #e8a598;
   --color-secondary: #f5d5cf;
-  --color-background: #fff5f3;
-  --color-background-end: #ffe8e4;
+  --color-background: #1a1a2e;
+  --color-background-end: #16213e;
   --color-text: #5c3d37;
   --color-card-back: #d4857a;
   --color-question-text: #5c3d37;
@@ -57,13 +57,13 @@ h1, h2, h3 {
 
 .home__title {
   font-size: 2.5rem;
-  color: #2d2d2d;
+  color: #f0e6ff;
   margin-bottom: 0.5rem;
 }
 
 .home__subtitle {
   font-size: 1.1rem;
-  color: #666;
+  color: #a89ec9;
   font-weight: 400;
 }
 
@@ -82,13 +82,14 @@ h1, h2, h3 {
 
 /* Deck Card (on home screen) */
 .deck-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 2rem;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 3px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -99,13 +100,14 @@ h1, h2, h3 {
   top: 0;
   left: 0;
   right: 0;
-  height: 6px;
+  height: 4px;
   background: var(--deck-color);
 }
 
 .deck-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .deck-card:active {
@@ -119,12 +121,12 @@ h1, h2, h3 {
 
 .deck-card__name {
   font-size: 1.5rem;
-  color: #2d2d2d;
+  color: #f0e6ff;
   margin-bottom: 0.5rem;
 }
 
 .deck-card__description {
-  color: #666;
+  color: #b8aed0;
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -132,7 +134,7 @@ h1, h2, h3 {
 .deck-card__count {
   margin-top: 1rem;
   font-size: 0.85rem;
-  color: #999;
+  color: #7a6f99;
 }
 
 /* Card View */
@@ -343,10 +345,10 @@ h1, h2, h3 {
 .footer {
   text-align: center;
   padding: 2rem;
-  color: #999;
+  color: #7a6f99;
   font-size: 0.85rem;
 }
 
 .footer__heart {
-  color: #e57373;
+  color: #ff6b8a;
 }
