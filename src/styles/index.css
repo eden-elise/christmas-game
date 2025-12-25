@@ -6,6 +6,7 @@
   --color-background-end: #ffe8e4;
   --color-text: #5c3d37;
   --color-card-back: #d4857a;
+  --color-question-text: #5c3d37;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -41,7 +42,7 @@ h1, h2, h3 {
 /* Home Screen */
 .home {
   padding: 2rem;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
@@ -68,9 +69,10 @@ h1, h2, h3 {
 
 .home__decks {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.5rem;
   flex: 1;
+  align-content: start;
 }
 
 /* Deck Card (on home screen) */
@@ -243,7 +245,7 @@ h1, h2, h3 {
   font-family: var(--font-display);
   font-size: 1.5rem;
   line-height: 1.6;
-  color: var(--color-text);
+  color: var(--color-question-text);
   text-align: center;
 }
 
