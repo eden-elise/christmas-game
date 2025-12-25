@@ -1,0 +1,345 @@
+/* CSS Custom Properties for theming */
+:root {
+  --color-primary: #e8a598;
+  --color-secondary: #f5d5cf;
+  --color-background: #fff5f3;
+  --color-background-end: #ffe8e4;
+  --color-text: #5c3d37;
+  --color-card-back: #d4857a;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --transition-theme: 0.5s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, var(--color-background) 0%, var(--color-background-end) 100%);
+  min-height: 100vh;
+  transition: background var(--transition-theme);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+/* Home Screen */
+.home {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home__header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+}
+
+.home__title {
+  font-size: 2.5rem;
+  color: #2d2d2d;
+  margin-bottom: 0.5rem;
+}
+
+.home__subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.home__decks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  flex: 1;
+}
+
+/* Deck Card (on home screen) */
+.deck-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.deck-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--deck-color);
+}
+
+.deck-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.deck-card:active {
+  transform: translateY(-2px);
+}
+
+.deck-card__icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.deck-card__name {
+  font-size: 1.5rem;
+  color: #2d2d2d;
+  margin-bottom: 0.5rem;
+}
+
+.deck-card__description {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.deck-card__count {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* Card View */
+.card-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  transition: background var(--transition-theme);
+}
+
+.card-view__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.card-view__back {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-text);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+}
+
+.card-view__back:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.card-view__title {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-view__counter {
+  color: var(--color-text);
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* Flip Card */
+.flip-card-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  padding: 1rem;
+}
+
+.flip-card {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.flip-card__back {
+  background: var(--color-card-back);
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.flip-card__back-pattern {
+  position: absolute;
+  inset: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+}
+
+.flip-card__back-icon {
+  font-size: 4rem;
+  z-index: 1;
+}
+
+.flip-card__back-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  z-index: 1;
+}
+
+.flip-card__front {
+  background: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card__question {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  text-align: center;
+}
+
+/* Actions */
+.card-view__actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+}
+
+.card-view__button {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+.card-view__button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-view__button--secondary {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-text);
+}
+
+.card-view__button--secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Instructions hint */
+.flip-hint {
+  text-align: center;
+  color: var(--color-text);
+  opacity: 0.6;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .home {
+    padding: 1rem;
+  }
+
+  .home__title {
+    font-size: 2rem;
+  }
+
+  .home__decks {
+    grid-template-columns: 1fr;
+  }
+
+  .flip-card {
+    max-width: 320px;
+  }
+
+  .flip-card__question {
+    font-size: 1.25rem;
+  }
+
+  .card-view__header {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .card-view__title {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.footer__heart {
+  color: #e57373;
+}
