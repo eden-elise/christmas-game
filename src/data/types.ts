@@ -13,8 +13,9 @@ export interface Deck {
     secondary: string;    // Lighter accent
     background: string;   // Page background gradient start
     backgroundEnd: string; // Page background gradient end
-    text: string;         // Text color on cards
+    text: string;         // Text color for UI elements on background
     cardBack: string;     // Card back color
+    questionText: string; // Text color for questions (readable on white)
   };
   cards: Card[];
 }

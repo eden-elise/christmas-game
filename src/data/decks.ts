@@ -13,6 +13,7 @@ export const decks: Deck[] = [
       backgroundEnd: '#ffe8e4',
       text: '#5c3d37',
       cardBack: '#d4857a',
+      questionText: '#5c3d37',
     },
     cards: [
       { id: 'gtk-1', question: "What's a small thing that always makes your day better?" },
@@ -41,6 +42,7 @@ export const decks: Deck[] = [
       backgroundEnd: '#1a1212',
       text: '#ffeaea',
       cardBack: '#8b1a1a',
+      questionText: '#6b1b1b',
     },
     cards: [
       { id: 'sp-1', question: "What's something I do that drives you crazy (in the best way)?" },
@@ -67,6 +69,7 @@ export const decks: Deck[] = [
       backgroundEnd: '#0d0b12',
       text: '#e8e0ff',
       cardBack: '#4a2c8a',
+      questionText: '#3d2175',
     },
     cards: [
       { id: 'ph-1', question: "Do you think people can truly change? Why or why not?" },
@@ -95,6 +98,7 @@ export const decks: Deck[] = [
       backgroundEnd: '#fff8e1',
       text: '#5d4e37',
       cardBack: '#e09100',
+      questionText: '#5d4e37',
     },
     cards: [
       { id: 'ch-1', question: "What's your happiest childhood memory?" },
@@ -123,6 +127,7 @@ export const decks: Deck[] = [
       backgroundEnd: '#e0f7f4',
       text: '#1d4e47',
       cardBack: '#00695c',
+      questionText: '#1d4e47',
     },
     cards: [
       { id: 'dr-1', question: "Where do you see yourself in 5 years?" },
